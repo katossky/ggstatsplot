@@ -1,9 +1,13 @@
 # install.packages("ggstatsplot")
+install.packages("pkgload")
+install.packages("vdiffr")
 
 library(ggstatsplot)
 library(dplyr)
 library(rlang)
 
+devtools::load_all()
+pkgload::load_all()
 
 ##### Reproduction de l'erreur d'origine
 
@@ -63,7 +67,11 @@ split(test, ~ id)
   val2 = runif(15)
 ))
 
+
 grouped_ggscatterstats(df, val1, val2, grouping.var = grp)
 
+grouped_ggscatterstats(df$c, val1, val2, grouping.var = grp)
 
+df <- .grouped_list(df, grp)
+df
 
