@@ -1,4 +1,4 @@
-#' A@title Box/Violin plots for between-subjects comparisons
+#' @title Box/Violin plots for between-subjects comparisons
 #' @name ggbetweenstats
 #'
 #' @description
