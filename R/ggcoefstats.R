@@ -235,6 +235,11 @@ ggcoefstats <- function(
     meta.type <- stats_type_switch(meta.type)
 
     subtitle_df <- meta_analysis(tidy_df, type = meta.type, digits = digits)
+    nouvelle_ligne <- subtitle_df[,c("term", "estimate", "std.error", "conf.level", "conf.low",
+                                     "conf.high", "statistic", "p.value", "conf.method",
+                                     "expression")]
+    nouvelle_ligne$df.error <- NA
+    tidy_df <- bind_rows(tidy_df, nouvelle_ligne)
     subtitle <- .extract_expression(subtitle_df)
 
     if (meta.type == "parametric" && bf.message) {
