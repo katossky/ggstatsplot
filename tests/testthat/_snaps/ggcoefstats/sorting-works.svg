@@ -49,8 +49,8 @@
 <polyline points='685.45,283.30 94.06,283.30 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
 <polyline points='94.06,283.30 94.06,283.30 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
 <polyline points='685.45,127.89 685.45,127.89 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
-<polyline points='685.45,127.89 139.16,127.89 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
-<polyline points='139.16,127.89 139.16,127.89 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
+<polyline points='685.45,127.89 139.13,127.89 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
+<polyline points='139.13,127.89 139.13,127.89 ' style='stroke-width: 0.97; stroke-linecap: butt;' />
 <line x1='94.06' y1='531.95' x2='94.06' y2='34.65' style='stroke-width: 2.13; stroke-dasharray: 11.38,11.38; stroke-linecap: butt;' />
 <line x1='113.76' y1='443.19' x2='108.88' y2='439.42' style='stroke-width: 1.07; stroke: #FAD510;' />
 <line x1='196.76' y1='278.65' x2='196.76' y2='282.29' style='stroke-width: 1.07; stroke: #CB2314;' />
