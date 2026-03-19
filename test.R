@@ -70,8 +70,12 @@ split(test, ~ id)
 
 grouped_ggscatterstats(df, val1, val2, grouping.var = grp)
 
-grouped_ggscatterstats(df$c, val1, val2, grouping.var = grp)
 
-df <- .grouped_list(df, grp)
-df
+df2 <- .grouped_list(df, grp)
+df2
+
+grouped_ggscatterstats(df2$c, val1, val2, grouping.var = grp) +
+grouped_ggscatterstats(df2$a, val1, val2, grouping.var = grp) +
+grouped_ggscatterstats(df2$b, val1, val2, grouping.var = grp)
+
 
