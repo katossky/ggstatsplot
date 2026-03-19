@@ -79,3 +79,35 @@ grouped_ggscatterstats(df2$a, val1, val2, grouping.var = grp) +
 grouped_ggscatterstats(df2$b, val1, val2, grouping.var = grp)
 
 
+
+##### Modification grouped_ggscatterstats()
+
+# grouped_ggscatterstats2 <- function(
+#     data,
+#     ...,
+#     grouping.var,
+#     plotgrid.args = list(),
+#     annotation.args = list()
+# ) {
+#   .grouped_list(data, {{ grouping.var }}) %>%
+#     purrr::pmap(.f = ggscatterstats, ...) %>%
+#     combine_plots(plotgrid.args, annotation.args)
+# }
+
+
+grouped_ggscatterstats2 <- function(
+    data,
+    ...,
+    grouping.var,
+    plotgrid.args = list(),
+    annotation.args = list()
+)
+  .grouped_list(data, {{ grouping.var }}) %>%
+    purrr::pmap(.f = ggscatterstats, ...) %>%
+    combine_plots(plotgrid.args, annotation.args)
+
+?combine_plots
+
+
+
+
