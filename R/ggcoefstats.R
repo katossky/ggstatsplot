@@ -246,8 +246,6 @@ ggcoefstats <- function(
     # En mettant "Summary measure" en premier, ggplot2 le dessinera tout en bas de l'axe Y.
     tidy_df$term <- factor(tidy_df$term, levels = c("Summary measure", setdiff(unique(tidy_df$term), "Summary measure")))
 
-    subtitle <- .extract_expression(subtitle_df)
-
     if (meta.type == "parametric" && bf.message) {
       caption_df <- suppressWarnings(meta_analysis(tidy_df, type = "bayes", digits = digits))
       caption <- .extract_expression(caption_df)
