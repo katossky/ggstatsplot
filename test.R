@@ -1,6 +1,8 @@
 # install.packages("ggstatsplot")
 
 library(ggstatsplot)
+library(dplyr)
+library(rlang)
 
 
 ##### Reproduction de l'erreur d'origine
@@ -29,7 +31,7 @@ test$id <- factor(test$id, levels=unique(test$id))
 split(test, ~ id)
 
 
-#####
+##### Implémentation avec une fonction
 
 .grouped_list <- function(data, grouping.var = NULL) {
   data <- as_tibble(data)
@@ -38,7 +40,7 @@ split(test, ~ id)
     return(data)
   }
 
-  data %<>%
+  data %>%
     mutate(
       across(
         {{ grouping.var }},
@@ -53,6 +55,8 @@ split(test, ~ id)
 #>      Patil, I. (2021). Visualizations with statistical details: The 'ggstatsplot' approach.
 #>      Journal of Open Source Software, 6(61), 3167, doi:10.21105/joss.03167
 
+##### Test final
+
 (df <- dplyr::tibble(
   grp = c(rep("c", 5), rep("a", 5), rep("b", 5)),
   val1 = runif(15),
@@ -60,3 +64,6 @@ split(test, ~ id)
 ))
 
 grouped_ggscatterstats(df, val1, val2, grouping.var = grp)
+
+
+
