@@ -1,4 +1,4 @@
-#' @title Movie information and user ratings from IMDB.com (long format).
+#' @title Movie information and user ratings from IMDB.com (long formats).
 #' @name movies_long
 #' @details Modified dataset from `{ggplot2movies}` package.
 #'
@@ -21,6 +21,10 @@
 #' @source <https://CRAN.R-project.org/package=ggplot2movies>
 #'
 #' @examples
+#' dim(movies_long)
+#' head(movies_long)
+#' dplyr::glimpse(movies_long)
+"movies_long"
 #' dim(movies_long)
 #' head(movies_long)
 #' dplyr::glimpse(movies_long)
