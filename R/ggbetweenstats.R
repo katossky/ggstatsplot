@@ -195,10 +195,19 @@ ggbetweenstats <- function(
   c(x, y) %<-% c(ensym(x), ensym(y))
   type <- stats_type_switch(type)
 
-  data %<>%
-    select({{ x }}, {{ y }}) %>%
-    tidyr::drop_na() %>%
+
+# *********************** Proposition de résolution de problème ************************ #
+  # data %<>%
+  #   select({{ x }}, {{ y }}) %>%
+  #   tidyr::drop_na() %>%
+  #   mutate({{ x }} := droplevels(as.factor({{ x }})))
+
+  plot_data <- data %>%
+    tidyr::drop_na({{ x }}, {{ y }}) %>%
     mutate({{ x }} := droplevels(as.factor({{ x }})))
+
+  stats_data <- plot_data %>%
+    select({{ x }}, {{ y }})
 
   # statistical analysis ------------------------------------------
 
