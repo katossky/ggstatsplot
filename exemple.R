@@ -68,3 +68,11 @@ p_problem_error <- grouped_ggbetweenstats(
 )
 
 p_problem_error
+
+# est-ce que dose_l a bien un seul niveau dans le sous-dataframe ?
+test_split$data[["Dose 5 mg"]] %>% pull(dose_l) %>% unique()
+test_split$data[["Dose 10 mg"]] %>% pull(dose_l) %>% unique()
+
+# simuler le fix manuellement
+test_split$data[["Dose 5 mg"]] %>% droplevels() %>% pull(dose_l) %>% levels()
+test_split$data[["Dose 10 mg"]] %>% droplevels() %>% pull(dose_l) %>% levels()
