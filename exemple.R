@@ -61,9 +61,9 @@ p_problem_error <- grouped_ggbetweenstats(
   plot.type = "box",
   point.args = list(alpha = 0, size = 0),
   ggplot.component = list(
-    #aes(fill = dose_l, color = dose_l),
-    #scale_fill_manual(values = c("Day 1" = "orange", "Day 7" = "black")),
-    #scale_color_manual(values = c("Day 1" = "orange", "Day 7" = "black"))
+    aes(fill = dose_l, color = dose_l),
+    scale_fill_manual(values = c("Day 1" = "orange", "Day 7" = "black")),
+    scale_color_manual(values = c("Day 1" = "orange", "Day 7" = "black"))
   )
 )
 
