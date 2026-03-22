@@ -15,6 +15,7 @@
 .grouped_list <- function(data, grouping.var) {
   as_tibble(data) %>%
     split(f = new_formula(NULL, enquo(grouping.var)), drop = TRUE) %>%
+    purrr::map(droplevels) %>%    #  ligne ajoutée
     list(data = ., title = names(.))
 }
 
