@@ -2,7 +2,7 @@
 install.packages("pkgload")
 install.packages("vdiffr")
 
-library(ggstatsplot)
+# library(ggstatsplot)
 library(dplyr)
 library(rlang)
 
