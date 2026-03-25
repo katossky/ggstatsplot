@@ -49,7 +49,7 @@ df
     return(data)
   }
 
-  # Correction : conserver l'ordre d'apparition des groupes avec factor
+  # Conserver l'ordre d'apparition des groupes avec factor
   data <- dplyr::mutate(
     data,
     dplyr::across(
@@ -64,7 +64,6 @@ df
     # structure attendue
     list(data = ., title = names(.))
 
-
 }
 
 
@@ -75,6 +74,6 @@ assignInNamespace(".grouped_list", .grouped_list, ns = "ggstatsplot")
 # la fonction renvoie l'ordre correct des var
 
 
-# erreur lors de l'éxécution
+# Graphique s'affiche correctement
 grouped_ggscatterstats(df, val1, val2, grouping.var = grp)
 
