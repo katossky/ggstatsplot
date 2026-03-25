@@ -60,8 +60,9 @@ df
 
   data %>% split(
     f = rlang::new_formula(NULL, rlang::enquo(grouping.var)),
-    drop = FALSE
-  )
+    drop = TRUE) %>%
+    # structure attendue
+    list(data = ., title = names(.))
 
 
 }
@@ -76,7 +77,4 @@ assignInNamespace(".grouped_list", .grouped_list, ns = "ggstatsplot")
 
 # erreur lors de l'éxécution
 grouped_ggscatterstats(df, val1, val2, grouping.var = grp)
-
-
-
 
