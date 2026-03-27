@@ -20,7 +20,7 @@
     return(data)
   }
 
-  # Conserver l'ordre d'apparition des groupes avec factor
+  # To conserve the apparition order of the groups with factor
   data <- dplyr::mutate(
     data,
     dplyr::across(
@@ -32,7 +32,7 @@
   data %>% split(
     f = rlang::new_formula(NULL, rlang::enquo(grouping.var)),
     drop = TRUE) %>%
-    # structure attendue
+    # Expected structure
     list(data = ., title = names(.))
 
 }
