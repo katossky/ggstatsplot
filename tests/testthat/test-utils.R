@@ -13,6 +13,33 @@ test_that(
   }
 )
 
+test_that(".grouped_list preserves appearance order", {
+  df <- tibble::tibble(
+    grp = c("c", "a", "b", "a"),
+    x = 1:4
+  )
+
+  res <- .grouped_list(df, grouping.var = grp)
+
+  expect_equal(res$title, c("c", "a", "b"))
+})
+
+
+test_that(".grouped_list output works with grouped_ggscatterstats", {
+  skip_if_not_installed("ggstatsplot")
+
+  df <- tibble::tibble(
+    grp = c("c", "a", "b", "a"),
+    x = rnorm(4),
+    y = rnorm(4)
+  )
+
+  expect_error(
+    grouped_ggscatterstats(df, x, y, grouping.var = grp),
+    NA
+  )
+})
+
 # .is_palette_sufficient ------------------------------------
 
 test_that(

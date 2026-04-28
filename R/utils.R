@@ -12,10 +12,29 @@
 #' @examplesIf identical(Sys.getenv("NOT_CRAN"), "true")
 #' ggstatsplot:::.grouped_list(ggplot2::msleep, grouping.var = vore)
 #' @keywords internal
-.grouped_list <- function(data, grouping.var) {
-  as_tibble(data) %>%
-    split(f = new_formula(NULL, enquo(grouping.var)), drop = TRUE) %>%
+.grouped_list <- function(data, grouping.var = NULL) {
+
+  data <- tibble::as_tibble(data)
+
+  if (rlang::quo_is_null(rlang::enquo(grouping.var))) {
+    return(data)
+  }
+
+  # To conserve the apparition order of the groups with factor
+  data <- dplyr::mutate(
+    data,
+    dplyr::across(
+      {{ grouping.var }},
+      ~ factor(.x, levels = unique(.x))
+    )
+  )
+
+  data %>% split(
+    f = rlang::new_formula(NULL, rlang::enquo(grouping.var)),
+    drop = TRUE) %>%
+    # Expected structure
     list(data = ., title = names(.))
+
 }
 
 
