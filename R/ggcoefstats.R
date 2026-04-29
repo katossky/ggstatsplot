@@ -235,12 +235,20 @@ ggcoefstats <- function(
     meta.type <- stats_type_switch(meta.type)
 
     subtitle_df <- meta_analysis(tidy_df, type = meta.type, digits = digits)
-    subtitle <- .extract_expression(subtitle_df)
+    summary_measure <- subtitle_df[,c("term", "estimate", "std.error", "conf.level", "conf.low",
+                                     "conf.high", "statistic", "p.value", "conf.method",
+                                     "expression")]
+    summary_measure$df.error <- NA
+    summary_measure$term <- 'Summary measure'
 
     if (meta.type == "parametric" && bf.message) {
       caption_df <- suppressWarnings(meta_analysis(tidy_df, type = "bayes", digits = digits))
       caption <- .extract_expression(caption_df)
     }
+    tidy_df <- bind_rows(tidy_df, summary_measure)
+    # On force la colonne 'term' à être un "factor" ordonné.
+    # En mettant "Summary measure" en premier, ggplot2 le dessinera tout en bas de l'axe Y.
+    tidy_df$term <- factor(tidy_df$term, levels = c("Summary measure", setdiff(unique(tidy_df$term), "Summary measure")))
   }
 
   # basic plot -------------------------
